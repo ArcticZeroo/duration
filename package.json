@@ -1,0 +1,23 @@
+{
+  "name": "@arcticzeroo/duration",
+  "version": "1.0.0",
+  "description": "Port of dart's Duration class to JS!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcticZeroo/duration.git"
+  },
+  "keywords": [
+    "duration",
+    "dart"
+  ],
+  "author": "spencer@frozor.io",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArcticZeroo/duration/issues"
+  },
+  "homepage": "https://github.com/ArcticZeroo/duration#readme"
+}

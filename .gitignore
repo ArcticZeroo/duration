@@ -163,13 +163,3 @@ typings/
 .idea/misc.xml
 .idea/modules.xml
 .idea/typescript-compiler.xml
-Duration.d.ts
-Duration.js
-Duration.js.map
-Duration.ts
-index.d.ts
-index.js
-index.js.map
-index.ts
-package.json
-tsconfig.json
