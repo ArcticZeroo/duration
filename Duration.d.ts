@@ -10,12 +10,13 @@ interface IDurationConstructorParams {
     milliseconds?: number;
     microseconds?: number;
 }
+export declare type DurationOrMilliseconds = Duration | number;
 export default class Duration {
-    static readonly microsecondsPerMillisecond: number;
-    static readonly millisecondsPerSecond: number;
-    static readonly secondsPerMinute: number;
-    static readonly minutesPerHour: number;
-    static readonly hoursPerDay: number;
+    static readonly microsecondsPerMillisecond = 1000;
+    static readonly millisecondsPerSecond = 1000;
+    static readonly secondsPerMinute = 60;
+    static readonly minutesPerHour = 60;
+    static readonly hoursPerDay = 24;
     static readonly microsecondsPerSecond: number;
     static readonly microsecondsPerMinute: number;
     static readonly microsecondsPerHour: number;
@@ -30,7 +31,7 @@ export default class Duration {
     /**
      * The value of this Duration object in microseconds
      */
-    private _duration;
+    private readonly _duration;
     constructor({ days, hours, minutes, seconds, milliseconds, microseconds }: IDurationConstructorParams);
     /**
      * Adds this Duraiton and [other] and returns the difference as a new Duration object.
@@ -98,5 +99,6 @@ export default class Duration {
      * positive.
      */
     abs(): Duration;
+    static fromDurationOrMilliseconds(value: DurationOrMilliseconds): Duration;
 }
 export {};

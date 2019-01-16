@@ -6,7 +6,11 @@
     "lib": [
       "es2018"
     ],
-    "declaration": true
+    "declaration": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules"

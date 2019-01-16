@@ -12,6 +12,8 @@ interface IDurationConstructorParams {
     microseconds?: number;
 }
 
+export type DurationOrMilliseconds = Duration | number;
+
 export default class Duration {
     static readonly microsecondsPerMillisecond = 1000;
     static readonly millisecondsPerSecond = 1000;
@@ -36,12 +38,12 @@ export default class Duration {
 
     static readonly minutesPerDay = Duration.minutesPerHour * Duration.hoursPerDay;
 
-    static readonly zero: Duration = new Duration({ seconds: 0 });
+    static readonly zero: Duration = new Duration({});
 
     /**
      * The value of this Duration object in microseconds
      */
-    private _duration: number;
+    private readonly _duration: number;
 
     constructor({ days = 0, hours = 0, minutes = 0, seconds = 0, milliseconds = 0, microseconds = 0 } : IDurationConstructorParams) {
         this._duration = (
@@ -166,5 +168,13 @@ export default class Duration {
      */
     abs(): Duration {
         return new Duration({ microseconds: Math.abs(this._duration) });
+    }
+    
+    static fromDurationOrMilliseconds(value: DurationOrMilliseconds): Duration {
+        if (value instanceof Duration) {
+            return value;
+        }
+        
+        return new Duration({ milliseconds: value });
     }
 }

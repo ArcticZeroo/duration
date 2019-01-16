@@ -112,6 +112,12 @@ class Duration {
     abs() {
         return new Duration({ microseconds: Math.abs(this._duration) });
     }
+    static fromDurationOrMilliseconds(value) {
+        if (value instanceof Duration) {
+            return value;
+        }
+        return new Duration({ milliseconds: value });
+    }
 }
 Duration.microsecondsPerMillisecond = 1000;
 Duration.millisecondsPerSecond = 1000;
@@ -128,6 +134,6 @@ Duration.millisecondsPerDay = Duration.millisecondsPerHour * Duration.hoursPerDa
 Duration.secondsPerHour = Duration.secondsPerMinute * Duration.minutesPerHour;
 Duration.secondsPerDay = Duration.secondsPerHour * Duration.hoursPerDay;
 Duration.minutesPerDay = Duration.minutesPerHour * Duration.hoursPerDay;
-Duration.zero = new Duration({ seconds: 0 });
+Duration.zero = new Duration({});
 exports.default = Duration;
 //# sourceMappingURL=Duration.js.map
