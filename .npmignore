@@ -1,1 +1,5 @@
+# Ignore typescript files
 *.ts
+
+# But include the definitions for them
+!*.d.ts
