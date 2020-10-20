@@ -1,6 +1,6 @@
 {
   "name": "@arcticzeroo/duration",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Port of dart's Duration class to JS!",
   "main": "index.js",
   "scripts": {
