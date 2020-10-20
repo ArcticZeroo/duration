@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ArcticZeroo/duration/issues"
   },
-  "homepage": "https://github.com/ArcticZeroo/duration#readme"
+  "homepage": "https://github.com/ArcticZeroo/duration#readme",
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
 }
