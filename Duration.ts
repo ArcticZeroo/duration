@@ -38,14 +38,14 @@ export default class Duration {
 
     static readonly minutesPerDay = Duration.minutesPerHour * Duration.hoursPerDay;
 
-    static readonly zero: Duration = new Duration({});
+    static readonly zero: Duration = new Duration();
 
     /**
      * The value of this Duration object in microseconds
      */
     private readonly _duration: number;
 
-    constructor({ days = 0, hours = 0, minutes = 0, seconds = 0, milliseconds = 0, microseconds = 0 } : IDurationConstructorParams) {
+    constructor({ days = 0, hours = 0, minutes = 0, seconds = 0, milliseconds = 0, microseconds = 0 }: IDurationConstructorParams = {}) {
         this._duration = (
             Duration.microsecondsPerDay * days +
             Duration.microsecondsPerHour * hours +
@@ -57,10 +57,10 @@ export default class Duration {
     }
 
     /**
-     * Adds this Duraiton and [other] and returns the difference as a new Duration object.
-     * @param other
+     * Adds this Duration and [other] and returns the difference as a new Duration object.
+     * @param other A duration or constructor params for a duration
      */
-    add(other: Duration|IDurationConstructorParams): Duration {
+    add(other: Duration | IDurationConstructorParams): Duration {
         if (other instanceof Duration) {
             return new Duration({ microseconds: this._duration + other._duration });
         }
@@ -70,19 +70,19 @@ export default class Duration {
 
     /**
      * Subtracts [other] from this Duration and returns the difference as a new Duration object
-     * @param other
+     * @param other A duration or constructor params for a duration
      */
-    subtract(other: Duration|IDurationConstructorParams): Duration {
+    subtract(other: Duration | IDurationConstructorParams): Duration {
         if (other instanceof Duration) {
             return new Duration({ microseconds: this._duration - other._duration });
         }
 
-        return this.add(new Duration(other));
+        return this.subtract(new Duration(other));
     }
 
     /**
      * Returns true if this {@link Duration} has the same value as {other}
-     * @param other
+     * @param other Any value to check equality
      */
     equals(other: any) {
         if (other instanceof Duration) {
@@ -169,12 +169,18 @@ export default class Duration {
     abs(): Duration {
         return new Duration({ microseconds: Math.abs(this._duration) });
     }
-    
+
+    /**
+     * Returns a new `Duration` from the given [value], where value is either
+     * a `Duration` or an interval in milliseconds.
+     * This is useful for situations where the calling users likely have no
+     * idea that this library even exists, and just want to use Date millis.
+     */
     static fromDurationOrMilliseconds(value: DurationOrMilliseconds): Duration {
         if (value instanceof Duration) {
             return value;
         }
-        
+
         return new Duration({ milliseconds: value });
     }
 }
